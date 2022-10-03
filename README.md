@@ -4,6 +4,8 @@
 
 - When should you use RELAX? If your output is a vector representation and you have no label information.
 
+- Open Google Colab notebook (RELAX.ipynb) and test out RELAX!
+
 - More information can be found in the paper: <b>Representation Learning Explainability </b><a href="https://arxiv.org/abs/2112.10161">(Wickstrøm et al., 2022)</a>
 
 </p>
