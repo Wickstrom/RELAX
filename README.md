@@ -4,7 +4,7 @@ This repository contains code for RELAX, a framework for representation learning
 
 </p>
 <p align="center">
-  <img width="800" src="https://raw.githubusercontent.com/RELAX/blob/relax-framework.png">
+  <img width="800" src="https://github.com/Wickstrom/RELAX/blob/main/relax-ramework.png">
 </p>
 
 - More information can be found in the paper:
