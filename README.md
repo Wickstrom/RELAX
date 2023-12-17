@@ -1,5 +1,7 @@
 # RELAX: Representation Learning Explainability
 
+- Currently undergoing major changes to repository
+
 - This repository contains code for RELAX, a framework for representation learning explainability. RELAX is based on perturbation-based explainability and work by measuring the change in the representation space as parts of the input are masked out.
 
 - When should you use RELAX? If your output is a vector representation and you have no label information.
@@ -12,4 +14,21 @@
 <p align="center">
   <img width="800" src="https://github.com/Wickstrom/RELAX/blob/main/relax-ramework.png">
 </p>
+
+## Citation
+
+If you find RELAX interesting and use it in your research, use the following Bibtex annotation to cite:
+
+```bibtex
+@article{wickstrom2023relax,
+  author  = {Wickstr\o{}m, Kristoffer K. and Trosten, Daniel J. and L\o{}kse, Sigurd and Boubekki, Ahc\`{e}ne and Mikalsen, Karl \o{}yvind and Kampffmeyer, Michael C. and Jenssen, Robert},
+  title   = {RELAX: Representation Learning Explainability},
+  journal = {International Journal of Computer Vision},
+  year    = {2023},
+  volume  = {131},
+  number  = {6},
+  pages   = {1584–1610},
+  url     = {https://doi.org/10.1007/s11263-023-01773-2}
+}
+```
 
