@@ -2,13 +2,17 @@ import torch
 import torch.nn.functional as F
 
 
-def mask_generator(self,
+def mask_generator(
     batch_size: int,
     shape: tuple,
     device: str,
     num_cells: int = 7,
     probablity_of_drop: float = 0.5,
     num_spatial_dims: int = 2) -> torch.Tensor:
+    """
+    Generates a batch of masks by sampling Bernoulli random variables (probablity_of_drop) in a lower dimensional grid (num_cells)
+    and upsamples the discrete masks using bilinear interpolation to obtain smooth continious mask in (0, 1).
+    """
 
     pad_size = (num_cells // 2, num_cells // 2, num_cells // 2, num_cells // 2)
 
@@ -25,8 +29,8 @@ def mask_generator(self,
         masks[mask_i] = grid_up[
             mask_i,
             :,
-            shift_x[mask_i]:shift_x[mask_i] + self.shape[-2],
-            shift_y[mask_i]:shift_y[mask_i] + self.shape[-1]
+            shift_x[mask_i]:shift_x[mask_i] + shape[-2],
+            shift_y[mask_i]:shift_y[mask_i] + shape[-1]
         ]
 
     return masks

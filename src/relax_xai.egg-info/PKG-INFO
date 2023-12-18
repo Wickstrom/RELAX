@@ -1,3 +1,17 @@
+Metadata-Version: 2.1
+Name: relax-xai
+Version: 0.0.1
+Summary: RELAX: a framework for explainability in representation learning.
+Author-email: Kristoffer Wickstrøm <kwi030@uit.no>
+Project-URL: Homepage, https://github.com/Wickstrom/RELAX
+Project-URL: Issues, https://github.com/Wickstrom/RELAX/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # RELAX: Representation Learning Explainability
 
 </p>
@@ -15,13 +29,6 @@
 
 - You can see RELAX used in practice in medical image retrieval in the paper: <b>A clinically motivated self-supervised approach for content-based image retrieval of CT liver images </b> <a href="https://www.sciencedirect.com/science/article/pii/S0895611123000575">(Wickstrøm et al., 2023)</a>, <a href="https://arxiv.org/abs/2207.04812">(Wickstrøm et al., 2022)</a>
 
-## Installation
-
-RELAX can be installed using pip as follows:
-
-```setup
-pip install relax-xai
-```
 
 ## Citation
 

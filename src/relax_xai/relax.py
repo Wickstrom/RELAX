@@ -18,10 +18,14 @@ class RELAX(nn.Module):
         Input image to be explained.
     encoder
         Encoder that transforms the input image into a new representation
-    num_batches
-        Number of batches with masks to generate
     batch_size
         The size of each batch of masks
+    num_batches
+        Number of batches with masks to generate
+    device
+        Device for computation.
+    new_shape_of_image
+        Image will be reshaped into this shape (image will be transformed into a square image).
     similarity_measure
         Function for measuring similarity between masked and unmasked representation
     sum_of_weights_initial_value
@@ -32,31 +36,33 @@ class RELAX(nn.Module):
                  encoder: nn.Module,
                  batch_size: int = 100,
                  num_batches: int = 30,
+                 device: str = 'cpu',
+                 new_shape_of_image: int = 224,
                  similarity_measure: nn.Module = nn.CosineSimilarity(dim=1),
                  sum_of_weights_initial_value: float = 1e-10):
 
         super().__init__()
 
-        self.input_image = imagenet_image_transforms(input_image)
+        self.device = device
         self.encoder = encoder
         self.batch_size = batch_size
         self.num_batches = num_batches
+
         self.similarity_measure = similarity_measure
+        self.input_image = imagenet_image_transforms(self.device, new_shape_of_image)(input_image)
 
-        self.shape = tuple(input_image.shape[2:])
-        self.device = input_image.device
-
-        self.unmasked_representations = encoder(input_image).expand(batch_size, -1)
+        self.shape = tuple([new_shape_of_image, new_shape_of_image])
+        self.unmasked_representations = encoder(self.input_image).expand(batch_size, -1)
 
         self.importance = torch.zeros(self.shape, device=self.device)
         self.uncertainty = torch.zeros(self.shape, device=self.device)
 
         self.sum_of_weights = sum_of_weights_initial_value*torch.ones(self.shape, device=self.device)
 
-    def forward(self) -> None:
+    def forward(self, **kwargs) -> None:
 
         for _ in range(self.num_batches):
-            for masks in mask_generator(self.batch_size, self.shape, self.device):
+            for masks in mask_generator(self.batch_size, self.shape, self.device, **kwargs):
 
                 x_mask = self.input_image * masks
 
@@ -78,5 +84,5 @@ class RELAX(nn.Module):
         return None
 
     @property
-    def U_RELAX(self) -> torch.Tensor:
+    def u_relax(self) -> torch.Tensor:
         return self.importance * (self.uncertainty <= self.uncertainty.median())
