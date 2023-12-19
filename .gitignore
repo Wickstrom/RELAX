@@ -2,5 +2,5 @@
 __pycache__
 *.pyc
 /dist/
-src/relax_xai.egg-info
+/src/relax_xai.egg-info/
 pyproject.toml
