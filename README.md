@@ -5,6 +5,8 @@
   <img width="800" src="https://github.com/Wickstrom/RELAX/blob/main/relax-ramework.png">
 </p>
 
+..... currently under major reconstruction .....
+
 This repository contains code for RELAX, a framework for representation learning explainability. RELAX is based on perturbation-based explainability and work by measuring the change in the representation space as parts of the input are masked out.
 
 When should you use RELAX? If your output is a vector representation and you have no label information.
