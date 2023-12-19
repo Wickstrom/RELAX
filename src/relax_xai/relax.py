@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 
-from utils import imagenet_image_transforms
-from masking_functions import mask_generator
+from relax_xai.utils import imagenet_image_transforms
+from relax_xai.masking_functions import mask_generator
 
 class RELAX(nn.Module):
     """
