@@ -6,13 +6,12 @@ IMAGENET_STD = [0.229, 0.224, 0.225]
 
 def imagenet_image_transforms(device: str, new_shape_of_image: int = 224):
     """
-    Returns transformations that takes an input and transforms it into a torch tensor
+    Returns transformations that takes a torch tensor and transforms it into a new tensor
     of size (1, C, new_shape_of_image, new_shape_of_image), normalizes the image according
     to the statistics from the Imagenet dataset, and puts the tensor on the desired device.
     """
     transform = torchvision.transforms.Compose([
         torchvision.transforms.Resize((new_shape_of_image, new_shape_of_image)),
-        torchvision.transforms.ToTensor(),
         torchvision.transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD),
         torchvision.transforms.Lambda(unsqeeze_image),
         ToDevice(device),

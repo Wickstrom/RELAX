@@ -22,10 +22,6 @@ class RELAX(nn.Module):
         The size of each batch of masks
     num_batches
         Number of batches with masks to generate
-    device
-        Device for computation.
-    new_shape_of_image
-        Image will be reshaped into this shape (image will be transformed into a square image).
     similarity_measure
         Function for measuring similarity between masked and unmasked representation
     sum_of_weights_initial_value
@@ -36,22 +32,18 @@ class RELAX(nn.Module):
                  encoder: nn.Module,
                  batch_size: int = 100,
                  num_batches: int = 30,
-                 device: str = 'cpu',
-                 new_shape_of_image: int = 224,
                  similarity_measure: nn.Module = nn.CosineSimilarity(dim=1),
                  sum_of_weights_initial_value: float = 1e-10):
 
         super().__init__()
 
-        self.device = device
-        self.encoder = encoder
         self.batch_size = batch_size
+        self.input_image = input_image
         self.num_batches = num_batches
-
+        self.device = input_image.device
+        self.encoder = encoder.to(self.device)
         self.similarity_measure = similarity_measure
-        self.input_image = imagenet_image_transforms(self.device, new_shape_of_image)(input_image)
-
-        self.shape = tuple([new_shape_of_image, new_shape_of_image])
+        self.shape = tuple(input_image.shape[2:])
         self.unmasked_representations = encoder(self.input_image).expand(batch_size, -1)
 
         self.importance = torch.zeros(self.shape, device=self.device)

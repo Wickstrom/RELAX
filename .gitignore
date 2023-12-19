@@ -2,5 +2,5 @@
 __pycache__
 *.pyc
 /dist/
-src/rela_xai.egg-info/
+/src/rela_xai.egg-info/
 .toml
