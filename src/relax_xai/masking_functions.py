@@ -23,14 +23,14 @@ def mask_generator(
     shift_x = torch.randint(0, num_cells, (batch_size,), device=device)
     shift_y = torch.randint(0, num_cells, (batch_size,), device=device)
 
-    masks = torch.empty((batch_size, 1, shape[-2], shape[-1]), device=device)
+    masks = torch.empty((batch_size, 1, shape[0], shape[1]), device=device)
 
     for mask_i in range(batch_size):
         masks[mask_i] = grid_up[
             mask_i,
             :,
-            shift_x[mask_i]:shift_x[mask_i] + shape[-2],
-            shift_y[mask_i]:shift_y[mask_i] + shape[-1]
+            shift_x[mask_i]:shift_x[mask_i] + shape[0],
+            shift_y[mask_i]:shift_y[mask_i] + shape[1]
         ]
 
-    return masks
+    yield masks

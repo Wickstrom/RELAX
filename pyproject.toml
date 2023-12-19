@@ -1,0 +1,18 @@
+[project]
+name = "relax_xai"
+version = "0.0.5"
+authors = [
+  { name="Kristoffer Wickstrøm", email="kwi030@uit.no" },
+]
+description = "RELAX: a framework for explainability in representation learning."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Wickstrom/RELAX"
+Issues = "https://github.com/Wickstrom/RELAX/issues"

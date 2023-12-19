@@ -1,3 +1,17 @@
+Metadata-Version: 2.1
+Name: relax-xai
+Version: 0.0.5
+Summary: RELAX: a framework for explainability in representation learning.
+Author-email: Kristoffer Wickstrøm <kwi030@uit.no>
+Project-URL: Homepage, https://github.com/Wickstrom/RELAX
+Project-URL: Issues, https://github.com/Wickstrom/RELAX/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # RELAX: Representation Learning Explainability
 
 </p>
