@@ -2,7 +2,7 @@
 
 </p>
 <p align="center">
-  <img width="800" src="https://github.com/Wickstrom/RELAX/blob/main/relax-ramework.png">
+  <img width="600" src="https://github.com/Wickstrom/RELAX/blob/main/relax-ramework.png">
 </p>
 
 This repository contains code for RELAX, a framework for representation learning explainability. RELAX is based on perturbation-based explainability and work by measuring the change in the representation space as parts of the input are masked out.
@@ -19,6 +19,37 @@ RELAX can be installed using pip as follows:
 
 ```setup
 pip install relax-xai
+```
+
+and requires torch and torchvision installed.
+
+## Toy example
+
+Here is a very simple example showing the basic structure for how to use RELAX. More description to come.
+
+```python
+import torch
+import torchvision
+from relax_xai.relax import RELAX
+from relax_xai.utils import imagenet_image_transforms
+
+x = torch.rand(3, 313, 210)  # Generate some random data.
+x = imagenet_image_transforms(device='cpu', new_shape_of_image=224)(x) # Resize image and apply Imagenet normalization.
+
+alexnet = torchvision.models.alexnet() # Load Alexnet model
+encoder = nn.Sequential(
+            alexnet.features,
+            alexnet.avgpool,
+            nn.Flatten()
+        ) # Remove classification head and only keep encoder part.
+encoder.eval() # Put encoder in evaluation mode.
+
+
+relax = RELAX(x, encoder) # Initialize RELAX
+with torch.no_grad(): relax.forward() # Run RELAX (with torch.no_grad() avoid memory issues).
+
+print(relax.importance) # Explanation for representation.
+print(relax.uncertainty) # Uncertainty in explanation.
 ```
 
 ## Citation
