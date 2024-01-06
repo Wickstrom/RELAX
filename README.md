@@ -30,6 +30,7 @@ Here is a very simple example showing the basic structure for how to use RELAX. 
 ```python
 import torch
 import torchvision
+import torch.nn as nn
 from relax_xai.relax import RELAX
 from relax_xai.utils import imagenet_image_transforms
 
