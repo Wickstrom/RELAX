@@ -25,7 +25,7 @@ and requires torch and torchvision installed.
 
 ## Toy example
 
-Here is a very simple example showing the basic structure for how to use RELAX. The input is assumed to be organized in (channel, height, width) format, and preprocessed using the Imagenet normalization (for encoders pretrained on Imagenet). The "imagenet_iamge_transforms"-function also reshapes the image into a square image (224, 224 by default) and places the image on the desired device.
+Here is a very simple example showing the basic structure for how to use RELAX. The input is assumed to be organized in (channel, height, width)-format, and preprocessed using the Imagenet normalization (for encoders pretrained on Imagenet). The "imagenet_image_transforms"-function also reshapes the image into a square image (224, 224 by default) and places the image on the desired device.
 
 ```python
 import torch
@@ -52,6 +52,13 @@ with torch.no_grad(): relax.forward() # Run RELAX (with torch.no_grad() avoid me
 print(relax.importance) # Explanation for representation.
 print(relax.uncertainty) # Uncertainty in explanation.
 ```
+
+## Important hyperparameters
+
+There are several hyperparameters that can affect the performance of RELAX:
+
+- **"batch_size" and "num_batches":** The number of masks used is governed by these two parameters. The total number of masks is batch_size*num_batches. Since the default number of masks is high (3000), we need to peform the masking+encoding in a batch-wise manner to avoid out-of-memory issues. The default number of masks is determined using a bound on the estimator of importance (see paper for more details). Reducing either "batch_size" or "num_batches" will make RELAX faster, but could decrease the quality of the explanations.
+-**"num_cells" and "probablity_of_drop"**: A mask in RELAX is generated following the same procedure as in <a href="https://arxiv.org/abs/1806.07421">(RISE)</a>. In this procedure, an image ("num_cells" x "num_cells") smaller than the original image, with each pixel following a Bernoulli distribution with "probablity_of_drop", is randomly sampled. The default value for "num_cells" is 7 and "probablity_of_drop" is 0.5. This is selected with images of size (224 x 224) in mind. This selection can also work okay for images of smaller sizes (112 x 112) or larger size (224 x 224), but for smaller or bigger than this it likely necessary to tune these hyperparameters.
 
 ## Citation
 
