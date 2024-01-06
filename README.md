@@ -73,6 +73,6 @@ If you find RELAX interesting and use it in your research, use the following Bib
   volume  = {131},
   number  = {6},
   pages   = {1584–1610},
-  url     = {https://doi.org/10.1007/s11263-023-01773-2}
+  doi     = {https://doi.org/10.1007/s11263-023-01773-2}
 }
 ```
