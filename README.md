@@ -25,7 +25,7 @@ and requires torch and torchvision installed.
 
 ## Toy example
 
-Here is a very simple example showing the basic structure for how to use RELAX. The input is assumed to be organized in (channel, height, width)-format, and preprocessed using the Imagenet normalization (for encoders pretrained on Imagenet). The "imagenet_image_transforms"-function also reshapes the image into a square image (224, 224 by default) and places the image on the desired device.
+Here is a very simple example showing the basic structure for how to use RELAX. The input is assumed to be organized in (channel, height, width)-format, and preprocessed using the Imagenet normalization (for encoders pretrained on Imagenet). The "imagenet_image_transforms"-function also reshapes the image into a square image ((224 x 224) by default) and places the image on the desired device.
 
 ```python
 import torch
