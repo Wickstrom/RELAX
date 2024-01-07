@@ -54,6 +54,10 @@ with torch.no_grad(): relax.forward() # Run RELAX (with torch.no_grad() avoid me
 # version of relax.importance (U-RELAX) can be accessed in relax.u_relax.
 ```
 
+## Getting started with RELAX
+
+The "notebooks"-folder contains a notebook called "getting_started_with_relax", where you can test out RELAX. We recommend to use Google Colab with GPU-support enabled to speed up computation.
+
 ## Important hyperparameters
 
 There are several hyperparameters that can affect the performance of RELAX:
