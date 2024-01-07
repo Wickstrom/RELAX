@@ -49,9 +49,9 @@ encoder.eval() # Put encoder in evaluation mode.
 relax = RELAX(x, encoder) # Initialize RELAX
 with torch.no_grad(): relax.forward() # Run RELAX (with torch.no_grad() avoid memory issues).
 
-print(relax.importance.shape) # Explanation for representation.
-print(relax.uncertainty.shape) # Uncertainty in explanation.
-print(relax.u_relax.shape) # Uncertainty-filtered version of relax.importance.
+# The importance-heatmap produced by RELAX, and its associated uncertainty can be
+# accessed in relax.importance and relax.uncertainty. Also, an uncertainty-filtered
+# version of relax.importance (U-RELAX) can be accessed in relax.u_relax.
 ```
 
 ## Important hyperparameters
