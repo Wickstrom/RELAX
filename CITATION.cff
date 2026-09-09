@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use RELAX in your research, please cite the paper below."
+type: article
+title: "RELAX: Representation Learning Explainability"
+journal: "International Journal of Computer Vision"
+volume: 131
+issue: 6
+pages: "1584-1610"
+year: 2023
+doi: 10.1007/s11263-023-01773-2
+repository-code: "https://github.com/Wickstrom/RELAX"
+keywords:
+  - explainability
+  - interpretability
+  - representation learning
+  - self-supervised learning
+authors:
+  - given-names: Kristoffer K.
+    family: "Wickstrøm"
+  - given-names: Daniel J.
+    family: Trosten
+  - given-names: Sigurd
+    family: "Løkse"
+  - given-names: "Ahcène"
+    family: Boubekki
+  - given-names: "Karl Øyvind"
+    family: Mikalsen
+  - given-names: Michael C.
+    family: Kampffmeyer
+  - given-names: Robert
+    family: Jenssen
