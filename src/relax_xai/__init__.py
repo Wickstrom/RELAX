@@ -4,6 +4,10 @@ RELAX
 A framework for explainability in representation learning.
 """
 
-__version__ = "0.1.0"
-__author__ = 'Kristoffer Wickstrøm'
-__credits__ = 'UiT The Arctic University of Norway'
+from relax_xai.relax import RELAX
+
+__version__ = "0.2.0"
+__author__ = "Kristoffer Wickstrøm"
+__credits__ = "UiT The Arctic University of Norway"
+
+__all__ = ["RELAX"]
