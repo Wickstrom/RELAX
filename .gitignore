@@ -1,6 +1,6 @@
 .DS_Store
 __pycache__
 *.pyc
+.venv/
 /dist/
 /src/relax_xai.egg-info/
-pyproject.toml

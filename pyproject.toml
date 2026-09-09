@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "relax-xai"
+description = "RELAX: Representation Learning Explainability"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Kristoffer K. Wickstrøm" }]
+keywords = [
+    "explainability",
+    "interpretability",
+    "xai",
+    "representation-learning",
+    "self-supervised-learning",
+    "pytorch",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "torch",
+    "torchvision",
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/Wickstrom/RELAX"
+Documentation = "https://github.com/Wickstrom/RELAX#readme"
+Repository = "https://github.com/Wickstrom/RELAX"
+Paper = "https://arxiv.org/abs/2112.10161"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = { attr = "relax_xai.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP"]
