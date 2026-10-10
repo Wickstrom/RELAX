@@ -1,3 +1,5 @@
+import warnings
+
 import torch
 import torchvision
 
@@ -45,4 +47,12 @@ def unsqueeze_image(input_image: torch.Tensor) -> torch.Tensor:
     return input_image.unsqueeze(0)
 
 
-unsqeeze_image = unsqueeze_image
+def unsqeeze_image(input_image: torch.Tensor) -> torch.Tensor:
+    """Deprecated misspelled alias for :func:`unsqueeze_image`."""
+    warnings.warn(
+        "unsqeeze_image is deprecated and will be removed in a future release."
+        " Use unsqueeze_image instead.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
+    return unsqueeze_image(input_image)

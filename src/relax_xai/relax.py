@@ -54,6 +54,11 @@ class RELAX(nn.Module):
                 f"input_image must have shape (1, C, H, W), got {tuple(input_image.shape)}."
             )
 
+        if batch_size < 1:
+            raise ValueError("batch_size must be at least 1.")
+        if num_batches < 1:
+            raise ValueError("num_batches must be at least 1.")
+
         self.batch_size = batch_size
         self.input_image = input_image
         self.num_batches = num_batches
@@ -76,7 +81,8 @@ class RELAX(nn.Module):
     def forward(self, **kwargs) -> None:
         """
         Runs RELAX. Keyword arguments are passed on to mask_generator
-        (e.g. num_cells and probability_of_drop).
+        (e.g. num_cells and probability_of_drop). Calling forward() more than
+        once accumulates the statistics across calls.
         """
 
         with torch.no_grad():

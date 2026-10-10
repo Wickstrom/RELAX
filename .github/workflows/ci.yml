@@ -30,8 +30,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
       - run: pip install --editable . --no-deps
-      - run: pip install pytest
-      - run: pytest
+      - run: pip install pytest pytest-cov
+      - run: pytest --cov=relax_xai --cov-report=term-missing --cov-fail-under=95
 
   build:
     runs-on: ubuntu-latest

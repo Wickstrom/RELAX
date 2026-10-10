@@ -158,3 +158,13 @@ def test_package_exposes_relax_class():
     from relax_xai import RELAX as TopLevelRELAX
 
     assert TopLevelRELAX is RELAX
+
+
+def test_batch_size_must_be_positive():
+    with pytest.raises(ValueError, match="batch_size"):
+        RELAX(make_image(), make_encoder(), batch_size=0)
+
+
+def test_num_batches_must_be_positive():
+    with pytest.raises(ValueError, match="num_batches"):
+        RELAX(make_image(), make_encoder(), num_batches=0)
