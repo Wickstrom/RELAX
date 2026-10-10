@@ -4,3 +4,5 @@ __pycache__
 .venv/
 /dist/
 /src/relax_xai.egg-info/
+.coverage
+htmlcov/

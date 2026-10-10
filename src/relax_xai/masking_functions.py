@@ -54,6 +54,15 @@ def mask_generator(
         )
         probability_of_drop = probablity_of_drop
 
+    if num_spatial_dims != 2:
+        raise ValueError("Only num_spatial_dims=2 is supported.")
+    if len(shape) != 2:
+        raise ValueError("shape must be a 2-tuple (H, W).")
+    if num_cells < 1:
+        raise ValueError("num_cells must be at least 1.")
+    if min(shape) <= num_cells // 2:
+        raise ValueError(f"shape {tuple(shape)} is too small for num_cells={num_cells}.")
+
     pad_size = (num_cells // 2, num_cells // 2, num_cells // 2, num_cells // 2)
 
     grid = (

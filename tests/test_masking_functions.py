@@ -58,3 +58,23 @@ def test_num_cells_affects_mask_smoothness():
     dx_coarse = (coarse[..., :, 1:] - coarse[..., :, :-1]).abs().mean()
     dx_smooth = (smooth[..., :, 1:] - smooth[..., :, :-1]).abs().mean()
     assert dx_coarse > dx_smooth
+
+
+def test_num_spatial_dims_must_be_2():
+    with pytest.raises(ValueError, match="num_spatial_dims"):
+        mask_generator(batch_size=2, shape=SHAPE, device="cpu", num_spatial_dims=3)
+
+
+def test_shape_must_be_2d():
+    with pytest.raises(ValueError, match="2-tuple"):
+        mask_generator(batch_size=2, shape=(8, 8, 3), device="cpu")
+
+
+def test_num_cells_must_be_positive():
+    with pytest.raises(ValueError, match="num_cells"):
+        mask_generator(batch_size=2, shape=SHAPE, device="cpu", num_cells=0)
+
+
+def test_shape_must_be_large_enough():
+    with pytest.raises(ValueError, match="too small"):
+        mask_generator(batch_size=2, shape=(2, 2), device="cpu", num_cells=7)

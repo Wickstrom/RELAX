@@ -43,6 +43,7 @@ Paper = "https://arxiv.org/abs/2112.10161"
 [project.optional-dependencies]
 dev = [
     "pytest",
+    "pytest-cov",
     "ruff",
 ]
 
